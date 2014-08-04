@@ -1,4 +1,4 @@
-angular.module('angularDemo.home', ['angularDemo.domain'])
+angular.module('angularDemo.home', ['angularDemo.domain', 'ui.bootstrap'])
 
 .config(function config( $stateProvider ) {
   $stateProvider.state( 'home', {
@@ -18,6 +18,15 @@ angular.module('angularDemo.home', ['angularDemo.domain'])
     new Reminder(new Date(2014, 08, 10), "Brandon's Birthday"),
     new Reminder(new Date(2014, 09, 10), "Mom's Birthday")
   ];
+
+  $scope.newDate = null;
+  $scope.newDescription = null;
+  $scope.openDatepicker = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
 
 
   $scope.addNewReminder = function() {

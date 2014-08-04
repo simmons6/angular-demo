@@ -1,4 +1,10 @@
-<div ng-if="reminder != null">
-    <p><span ng-bind="reminder.description"></span> <span ng-bind="reminder.date | dateStringFilter"></span></p>
-    <p>Time remaining: <span ng-bind="daysRemaining"></span> days, <span ng-bind="hoursRemaining"></span> hours, <span ng-bind="minutesRemaining"></span> minutes, <span ng-bind="secondsRemaining"></span> seconds</p>
+<div class="panel panel-default" ng-if="reminder != null">
+    <div class="panel-heading">
+        <h3>{{reminder.description}}
+            <small ng-bind="reminder.date | dateStringFilter"></small>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <h4>Time remaining: <span ng-bind="daysRemaining"></span> days, <span ng-bind="hoursRemaining"></span> hours, <span ng-bind="minutesRemaining"></span> minutes, <span ng-bind="secondsRemaining"></span> seconds</h4>
+    </div>
 </div>

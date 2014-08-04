@@ -11,6 +11,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-karma');
@@ -197,6 +198,16 @@ module.exports = function ( grunt ) {
       }
     },
 
+    connect: {
+      server: {
+        options: {
+          port: 9000,
+          hostname: '*',
+          base: '<%= build_dir %>'
+        }
+      }
+    },
+
     /**
      * Minify the sources!
      */
@@ -330,7 +341,10 @@ module.exports = function ( grunt ) {
           '<%= html2js.app.dest %>',
           '<%= vendor_files.css %>',
           '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
-        ]
+        ],
+        options: {
+          livereload: true
+        }
       },
 
       /**
@@ -472,7 +486,7 @@ module.exports = function ( grunt ) {
    * before watching for changes.
    */
   grunt.renameTask( 'watch', 'delta' );
-  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+  grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'connect:server', 'delta'] );
 
   /**
    * The default task is to build and compile.
@@ -529,6 +543,7 @@ module.exports = function ( grunt ) {
     var cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
       return file.replace( dirRE, '' );
     });
+    var enableLiveReload = this.options().livereload;
 
     grunt.file.copy('src/index.html', this.data.dir + '/index.html', { 
       process: function ( contents, path ) {
@@ -536,7 +551,8 @@ module.exports = function ( grunt ) {
           data: {
             scripts: jsFiles,
             styles: cssFiles,
-            version: grunt.config( 'pkg.version' )
+            version: grunt.config( 'pkg.version' ),
+            livereload: enableLiveReload
           }
         });
       }

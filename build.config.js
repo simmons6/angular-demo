@@ -59,6 +59,8 @@ module.exports = {
    */
   vendor_files: {
     js: [
+      'vendor/jquery/dist/jquery.min.js',
+      'vendor/isotope/dist/isotope.pkgd.js',
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
@@ -66,8 +68,14 @@ module.exports = {
       'vendor/angular-ui-utils/modules/route/route.js'
     ],
     css: [
+      'vendor/components-font-awesome/css/font-awesome.css'
+    ],
+    fonts: [
+      'vendor/components-font-awesome/fonts/*',
+      'vendor/bootstrap/fonts/*'
     ],
     assets: [
+      
     ]
   },
 };

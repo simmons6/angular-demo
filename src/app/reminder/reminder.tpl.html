@@ -1,4 +1,4 @@
-<div class="panel panel-default" ng-if="reminder != null">
+<div class="panel panel-default col-xs-12 col-md-6" ng-class="{ 'col-lg-12': reminder.expanded === true, 'col-lg-3': reminder.expanded === false }" ng-if="reminder != null">
     <div class="panel-heading">
         <h3>{{reminder.description}}
             <small ng-bind="reminder.date | dateStringFilter"></small>
@@ -6,5 +6,6 @@
     </div>
     <div class="panel-body">
         <h4>Time remaining: <span ng-bind="daysRemaining"></span> days, <span ng-bind="hoursRemaining"></span> hours, <span ng-bind="minutesRemaining"></span> minutes, <span ng-bind="secondsRemaining"></span> seconds</h4>
+        <p ng-if="reminder.expanded === true">This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. </p>
     </div>
 </div>

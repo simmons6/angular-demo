@@ -2,6 +2,7 @@ angular.module( 'angularDemo', [
   'templates-app',
   'templates-common',
   'ui.router',
+  'angularDemo.isotope',
   'angularDemo.domain',
   'angularDemo.navbar',
   'angularDemo.home'

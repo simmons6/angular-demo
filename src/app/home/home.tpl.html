@@ -10,8 +10,10 @@
     
 </div>
 <div>
-    <div class="row" ng-repeat="reminder in reminders">
-        <angular-demo-reminder reminder="reminder" class="col-xs-10 col-md-10 col-lg-10"></angular-demo-reminder>
-        <a class="col-xs-2 col-md-2 col-lg-2" ng-click="removeReminder(reminder)">Remove</a>
-    </div>
+    
+    <button type="button" class="btn btn-primary" ng-click="toggleFilter()">Toggle Filter</button>
+    <button type="button" class="btn btn-primary" ng-click="expandItem()">Toggle Expand</button>
+
+    <isotope-container items="reminders" filter="activeFilter" item-template="isotopeTemplate"></isotope-container>
+
 </div>

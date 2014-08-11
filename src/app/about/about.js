@@ -1,8 +1,8 @@
-angular.module('angularDemo.about', [])
+angular.module('angularDemo.detail', [])
 
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'about', {
-    url: '/about',
+  $stateProvider.state( 'detail', {
+    url: '/detail',
     views: {
       "main": {
         controller: 'AboutCtrl',

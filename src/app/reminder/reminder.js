@@ -4,6 +4,7 @@ angular.module('angularDemo.domain', [])
         function Reminder(date, description) {
             this.date = date;
             this.description = description;
+            this.expanded = false;
         }
 
         var _MS_PER_DAY = 1000 * 60 * 60 * 24;

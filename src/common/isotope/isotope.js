@@ -14,8 +14,7 @@ angular.module('angularDemo.isotope', [])
                 };
                 element.isotope(isotopeOptions);
 
-
-                $scope.$watch('items', function (newItems, oldItems) {
+                $scope.$watch('items', function () {
                     $timeout(function () {
                         element.isotope('reloadItems');
                         element.isotope();

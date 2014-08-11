@@ -2,18 +2,17 @@
 <div ng-click="addNewReminder()">
     <h3>+ Add New</h3>
     <p class="input-group">
-      <input type="text" class="form-control" datepicker-popup="'dd.MM.yyyy'" ng-model="newDate" is-open="opened" close-text="Close" />
+      <!-- <input type="text" class="form-control" datepicker-popup="'dd.MM.yyyy'" ng-model="newDate" is-open="opened" close-text="Close" />
       <span class="input-group-btn">
         <button type="button" class="btn btn-default" ng-click="openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
       </span>
+       -->
     </p>
     
 </div>
+<input type="text" class="form-control" ng-model="filterString" />
 <div>
     
-    <button type="button" class="btn btn-primary" ng-click="toggleFilter()">Toggle Filter</button>
-    <button type="button" class="btn btn-primary" ng-click="expandItem()">Toggle Expand</button>
-
-    <isotope-container items="reminders" filter="activeFilter" item-template="isotopeTemplate"></isotope-container>
+    <isotope-container items="filteredItems" filter="activeFilter" item-template="isotopeTemplate"></isotope-container>
 
 </div>

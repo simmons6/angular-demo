@@ -13,8 +13,10 @@ angular.module('angularDemo.home', ['angularDemo.domain', 'ui.bootstrap'])
 
 .controller( 'HomeCtrl', function ($scope, Reminder) {
   $scope.reminders = [
-    new Reminder(new Date(2015, 06, 03), "Casey's Birthday"),
-    new Reminder(new Date(2014, 09, 10), "Mom's Birthday")
+    new Reminder(new Date(2015, 06, 03), "John Smith"),
+    new Reminder(new Date(2014, 09, 10), "Joe Shmoe"),
+    new Reminder(new Date(2014, 09, 10), "John Connor"),
+    new Reminder(new Date(2014, 09, 10), "Connor Simmons")
   ];
 
   $scope.newDate = null;
@@ -40,26 +42,22 @@ angular.module('angularDemo.home', ['angularDemo.domain', 'ui.bootstrap'])
 
   $scope.isotopeTemplate = '<angular-demo-reminder reminder="item"></angular-demo-reminder>';
 
-  var reminderFilterA = function () {
-     return true;
-  };
+  $scope.filterString = "";
+  $scope.filteredItems = $scope.reminders;
 
-  var reminderFilterB = function (reminder) {
-     return reminder.description === 'Test';
-  };
-
-  $scope.activeFilter = reminderFilterA;
-  $scope.toggleFilter = function () {
-    if ($scope.activeFilter == reminderFilterA) {
-      $scope.activeFilter = reminderFilterB;
-    } else {
-      $scope.activeFilter = reminderFilterA;
+  var updateFilter = function () {
+    $scope.filteredItems = [];
+    for (var i = 0; i < $scope.reminders.length; i++) {
+      var description = $scope.reminders[i].description;
+      if (description.toLowerCase().indexOf($scope.filterString.toLowerCase()) !== -1) {
+        $scope.filteredItems.push($scope.reminders[i]);
+      }
     }
   };
 
-  $scope.expandItem = function () {
-    $scope.reminders[0].expanded = !$scope.reminders[0].expanded;
-  };
+  $scope.$watchCollection('[filterString, reminders.length]', function () {
+    updateFilter();
+  });
 
 })
 

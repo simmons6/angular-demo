@@ -6,32 +6,20 @@ angular.module('angularDemo.isotope', [])
             templateUrl: 'isotope/isotope.tpl.html',
             scope : {
                 itemTemplate: '=',
-                items: '=',
-                filter: '='
+                items: '='
             },
             link: function ($scope, element) {
-                var isotopeFilter = function () {
-                    var scope = angular.element(this).scope();
-                    while (scope.$parent != null && scope.item == null) {
-                        scope = scope.$parent;
-                    }
-                    return $scope.filter(scope.item);
-                };
-
                 var isotopeOptions = {
-                    itemSelector: '.item',
-                    filter: isotopeFilter
+                    itemSelector: '.item'
                 };
-                
-                $scope.$watch('filter', function (filter) {
-                    element.isotope({ filter: isotopeFilter });
-                });
+                element.isotope(isotopeOptions);
+
 
                 $scope.$watch('items', function (newItems, oldItems) {
                     $timeout(function () {
                         element.isotope('reloadItems');
-                        element.isotope(isotopeOptions);
-                    });                    
+                        element.isotope();
+                    }, 0, false);                    
                 }, true);
 
                 $scope.$on('$destroy', function() {
@@ -48,9 +36,8 @@ angular.module('angularDemo.isotope', [])
                 item: '='
             },
             link: function ($scope, element) {
-                var template = $($scope.template).addClass('item');
-                var compiledTemplate = $compile(template)($scope);
-                element.replaceWith(compiledTemplate);
+                element.html($scope.template);
+                $compile(element.contents())($scope);
             }
         };
     })

@@ -1,4 +1,4 @@
-angular.module('angularDemo.detail', [])
+angular.module('angulaReminders.reminder')
 
 .config(function config( $stateProvider ) {
   $stateProvider.state( 'detail', {
@@ -21,5 +21,4 @@ angular.module('angularDemo.detail', [])
     "but wait! A third!"
   ];
 })
-
 ;

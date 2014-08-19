@@ -1,17 +1,27 @@
-angular.module('angularDemo.isotope', [])
+angular.module('angulaReminders.isotope', [])
     .directive('isotopeContainer', function ($timeout) {
         return {
-            restrict: 'E',
+            restrict: 'EA',
             replace: true,
             templateUrl: 'isotope/isotope.tpl.html',
             scope : {
                 itemTemplate: '=',
-                items: '='
+                items: '=',
+                isotopeOptions: '=',
+                trackBy: '@'
             },
             link: function ($scope, element) {
-                var isotopeOptions = {
-                    itemSelector: '.item'
+                var isotopeOptionsOverrides = {
+                    itemSelector: '.item',
+                    layoutMode: 'fitRows'
                 };
+
+                var isotopeOptions = angular.copy($scope.isotopeOptions);
+                if (isotopeOptions == null) {
+                    isotopeOptions = {};
+                }
+                
+                angular.extend(isotopeOptions, isotopeOptionsOverrides);
                 element.isotope(isotopeOptions);
 
                 $scope.$watch('items', function () {
@@ -21,15 +31,26 @@ angular.module('angularDemo.isotope', [])
                     }, 0, false);                    
                 }, true);
 
-                $scope.$on('$destroy', function() {
-                    element.isotope('destroy');
-                });
+                var useTrackBy = function() {
+                    return $scope.trackBy != null &&
+                        $scope.items != null &&
+                        $scope.items.length > 0 &&
+                        $scope.items[0][$scope.trackBy] != null;
+                };
+
+                $scope.getTrackBy = function(item, defaultId) {
+                    if (useTrackBy()) {
+                        return item[$scope.trackBy];
+                    } else {
+                        return defaultId;
+                    }
+                };
             }
         };
     })
     .directive('isotopeItem', function ($compile) {
         return {
-            restrict: 'E',
+            restrict: 'EA',
             scope : {
                 template: '=',
                 item: '='

@@ -1,18 +1,8 @@
-<h1>Set Reminders to Alert You</h1>
-<div ng-click="addNewReminder()">
-    <h3>+ Add New</h3>
-    <p class="input-group">
-      <!-- <input type="text" class="form-control" datepicker-popup="'dd.MM.yyyy'" ng-model="newDate" is-open="opened" close-text="Close" />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-       -->
-    </p>
-    
-</div>
+<button type="button" class="btn btn-default btn-lg" ng-click="addNewReminder()">
+  <span class="glyphicon glyphicon-bell"></span> New Reminder
+</button>
+
 <input type="text" class="form-control" ng-model="filterString" />
 <div>
-    
-    <isotope-container items="filteredItems" item-template="isotopeTemplate"></isotope-container>
-
+    <isotope-container class="reminder-container" items="filteredItems" item-template="isotopeTemplate"></isotope-container>
 </div>

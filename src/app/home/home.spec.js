@@ -1,5 +1,5 @@
 describe( 'home section', function() {
-  beforeEach( module( 'angularDemo' ) );
+  beforeEach( module( 'angulaReminders' ) );
 
   it( 'should have a dummy test', inject( function() {
     expect( true ).toBeTruthy();

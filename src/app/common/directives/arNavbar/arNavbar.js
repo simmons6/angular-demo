@@ -1,3 +1,5 @@
+angular.module('angulaReminders.common.directives.arNavbar', []);
+
 function arNavbar() {
     return {
         restrict: 'E',
@@ -6,5 +8,5 @@ function arNavbar() {
     };
 }
 
-angular.module('angulaReminders.common')
+angular.module('angulaReminders.common.directives.arNavbar')
     .directive('arNavbar', arNavbar);

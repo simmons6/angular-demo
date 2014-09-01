@@ -1,16 +1,19 @@
+<h3 class="modal-title">Add New Reminder</h1>
 <form role="form">
     <div class="form-group">
-        <label for="exampleInputEmail1">Reminder Description</label>
-        <input ng-model="newReminder.description" type="text" class="form-control" placeholder="Enter a brief description for your new reminder">
+        <label for="exampleInputEmail1">Reminder Title</label>
+        <input ng-model="newReminder.description" type="text" class="form-control" maxlength="50" placeholder="Enter a short title for your new reminder">
     </div>
     <div class="form-group">
         <label>Reminder Date</label>
-        <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="newReminder.date" is-open="datepickerOpened" ng-required="true" close-text="Close" />
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-        </span>
+        <div>
+            <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="newReminder.date" is-open="datepickerOpened" ng-required="true" close-text="Close" placeholder="Set the date of this reminder" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </div>
     </div>
 
     <button ng-click="submit()" class="btn btn-default" ng-disabled="!isNewReminderValid()">Add Reminder</button>
-    <a ng-click="$cancel(true)">Cancel</a>
+    <a class="cancel-button" ng-click="$close(false)">Cancel</a>
 </form>

@@ -1,4 +1,4 @@
-function HomeCtl($scope, Reminder, HomeService) {
+function HomeCtrl($scope, Reminder, HomeService) {
   $scope.reminders = HomeService.getReminders();
 
   $scope.addNewReminder = HomeService.addNewReminder;
@@ -12,4 +12,4 @@ function HomeCtl($scope, Reminder, HomeService) {
 }
 
 angular.module('angulaReminders.home')
-  .controller('HomeCtl', HomeCtl);
+  .controller('HomeCtrl', HomeCtrl);

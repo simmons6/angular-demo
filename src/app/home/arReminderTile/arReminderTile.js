@@ -1,3 +1,5 @@
+angular.module('angulaReminders.home.arReminderTile', []);
+
 function arReminderTile() {
     return {
         restrict: 'E',
@@ -10,7 +12,7 @@ function arReminderTile() {
     };
 }
 
-function arReminderTileCtl($scope, $interval) {
+function arReminderTileCtl($scope, $interval, HomeService) {
     var updateTimeRemaining = function () {
         if ($scope.reminder) {
             $scope.daysRemaining = $scope.reminder.getDaysRemaining();
@@ -23,10 +25,12 @@ function arReminderTileCtl($scope, $interval) {
     updateTimeRemaining();
     var reminderInterval = $interval(updateTimeRemaining, 1000);
 
+    $scope.deleteReminder = HomeService.deleteReminder;
+
     $scope.$on('$destroy', function () {
         $interval.cancel(reminderInterval);
     });
 }
 
-angular.module('angulaReminders.home')
+angular.module('angulaReminders.home.arReminderTile')
     .directive('arReminderTile', arReminderTile);

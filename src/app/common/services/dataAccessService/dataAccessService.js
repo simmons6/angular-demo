@@ -1,4 +1,8 @@
-function ReminderDataAccess($angularCacheFactory, Reminder) {
+angular.module('angulaReminders.common.services.dataAccessService', [
+    'jmdobry.angular-cache'
+]);
+
+function DataAccessService($angularCacheFactory, Reminder) {
     var cacheOptions = {
         storageMode: 'localStorage'
     };
@@ -61,9 +65,10 @@ function ReminderDataAccess($angularCacheFactory, Reminder) {
     this.deleteReminder = function (reminder) {
         if (reminder.id != null) {
             remindersCache.remove(reminder.id);
+            removeReminderFromCollection(reminder);
         }
     };
 }
 
-angular.module('angulaReminders.common')
-    .service('ReminderDataAccess', ReminderDataAccess);
+angular.module('angulaReminders.common.services.dataAccessService')
+    .service('DataAccessService', DataAccessService);

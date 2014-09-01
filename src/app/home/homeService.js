@@ -1,5 +1,5 @@
-function HomeService(Reminder, ModalService, ReminderDataAccess) {
-	var reminders = ReminderDataAccess.getReminders();
+function HomeService(Reminder, ModalService, DataAccessService) {
+	var reminders = DataAccessService.getReminders();
 
 	var remindersDateCompare = function (reminderA, reminderB) {
 		return reminderA.date > reminderB.date;
@@ -15,7 +15,7 @@ function HomeService(Reminder, ModalService, ReminderDataAccess) {
 	};
 
 	var addReminder = function (reminder) {
-		ReminderDataAccess.saveReminder(reminder);
+		DataAccessService.saveReminder(reminder);
 		reminders.push(reminder);
 		sortRemindersByTimeRemaining();
 	};
@@ -45,6 +45,12 @@ function HomeService(Reminder, ModalService, ReminderDataAccess) {
     this.addNewReminder = function () {
         var resolve = {};
         ModalService.openModal("home/newReminderModal/newReminderModal.tpl.html", newReminderModalCtl, resolve);
+    };
+
+    this.deleteReminder = function (reminder) {
+        DataAccessService.deleteReminder(reminder);
+        var reminderIndex = reminders.indexOf(reminder);
+        reminders.splice(reminderIndex, 1);
     };
 
     this.getFilteredReminders = function (filterString) {

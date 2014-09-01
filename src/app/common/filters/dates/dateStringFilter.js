@@ -1,3 +1,5 @@
+angular.module('angulaReminders.common.filters.dateStringFilter', []);
+
 function dateStringFilter() {
     return function (dateString) {
         var date = new Date(dateString);
@@ -10,5 +12,5 @@ function dateStringFilter() {
     };
 }
 
-angular.module('angulaReminders.common')
+angular.module('angulaReminders.common.filters.dateStringFilter')
     .filter('dateStringFilter', dateStringFilter);

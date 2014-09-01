@@ -1,7 +1,7 @@
 function HomeConfig($stateProvider) {
   $stateProvider.state( 'home', {
     url: '/home',
-    controller: 'HomeCtl',
+    controller: 'HomeCtrl',
     templateUrl: 'home/home.tpl.html',
     data: { 
       pageTitle: 'Home' 

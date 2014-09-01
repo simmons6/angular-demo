@@ -1,7 +1,23 @@
 @import 'newReminderModal/newReminderModal.less';
 
 .reminder-container{
+  margin-top: 40px;
+
   & > .item {
-    width: 285px;
+    width: 370px;
+    margin: 5px;
+    margin-top: 0px;
+
+    .reminder-tile {
+
+      .panel-heading {
+        height: 80px;
+      }
+
+      .delete-button {
+        float: right;
+        cursor: pointer;
+      }
+    }    
   }
 }

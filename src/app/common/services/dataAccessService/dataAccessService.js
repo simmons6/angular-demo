@@ -1,8 +1,5 @@
-angular.module('angulaReminders.common.services.dataAccessService', [
-    'jmdobry.angular-cache'
-]);
-
-function DataAccessService($angularCacheFactory, Reminder) {
+angular.module('angulaReminders.common.services.dataAccessService', ['jmdobry.angular-cache'])
+    .service('DataAccessService', function DataAccessService($angularCacheFactory, Reminder) {
     var cacheOptions = {
         storageMode: 'localStorage'
     };
@@ -68,7 +65,4 @@ function DataAccessService($angularCacheFactory, Reminder) {
             removeReminderFromCollection(reminder);
         }
     };
-}
-
-angular.module('angulaReminders.common.services.dataAccessService')
-    .service('DataAccessService', DataAccessService);
+});

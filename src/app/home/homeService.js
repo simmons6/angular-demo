@@ -1,4 +1,5 @@
-function HomeService(Reminder, ModalService, DataAccessService) {
+angular.module('angulaReminders.home')
+    .service('HomeService', function HomeService(Reminder, ModalService, DataAccessService) {
 	var reminders = DataAccessService.getReminders();
 
 	var remindersDateCompare = function (reminderA, reminderB) {
@@ -63,7 +64,4 @@ function HomeService(Reminder, ModalService, DataAccessService) {
 		}
 		return filteredItems;
 	};
-}
-
-angular.module('angulaReminders.home')
-    .service('HomeService', HomeService);
+});

@@ -1,8 +1,5 @@
-angular.module('angulaReminders.common.services.modalService', [
-    'ui.bootstrap'
-]);
-
-function ModalService($modal, $timeout) {
+angular.module('angulaReminders.common.services.modalService', ['ui.bootstrap'])
+    .service('ModalService', function ModalService($modal, $timeout) {
     var createModalInstance = function (templateUrl, controller, resolve) {
         var modalConfiguration = {
             templateUrl: templateUrl,
@@ -27,7 +24,4 @@ function ModalService($modal, $timeout) {
         var modalInstance = createModalInstance(templateUrl, controller, resolve);
         return modalInstance.result;
     };
-}
-
-angular.module('angulaReminders.common.services.modalService')
-    .service('ModalService', ModalService);
+});

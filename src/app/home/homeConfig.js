@@ -1,4 +1,5 @@
-function HomeConfig($stateProvider) {
+angular.module('angulaReminders.home')
+  .config(function HomeConfig($stateProvider) {
   $stateProvider.state( 'home', {
     url: '/home',
     controller: 'HomeCtrl',
@@ -7,7 +8,4 @@ function HomeConfig($stateProvider) {
       pageTitle: 'Home' 
     }
   });
-}
-
-angular.module('angulaReminders.home')
-  .config(HomeConfig);
+});

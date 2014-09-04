@@ -1,6 +1,5 @@
-angular.module('angulaReminders.common.domain.reminder', []);
-
-function ReminderFactory() {
+angular.module('angulaReminders.common.domain.reminder', [])
+    .factory('Reminder', function ReminderFactory() {
 
     function Reminder(date, description) {
         this.id = null;
@@ -40,7 +39,4 @@ function ReminderFactory() {
     };
 
     return Reminder;
-}
-
-angular.module('angulaReminders.common.domain.reminder')
-    .factory('Reminder', ReminderFactory);
+});

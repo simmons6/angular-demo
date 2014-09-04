@@ -1,6 +1,5 @@
-angular.module('angulaReminders.common.filters.dateStringFilter', []);
-
-function dateStringFilter() {
+angular.module('angulaReminders.common.filters.dateStringFilter', [])
+    .filter('dateStringFilter', function dateStringFilter() {
     return function (dateString) {
         var date = new Date(dateString);
         var month = date.getMonth() + 1;
@@ -10,7 +9,4 @@ function dateStringFilter() {
 
         return month + "/" + day + "/" + year;
     };
-}
-
-angular.module('angulaReminders.common.filters.dateStringFilter')
-    .filter('dateStringFilter', dateStringFilter);
+});

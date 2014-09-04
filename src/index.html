@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="angulaReminders" ng-controller="AppCtrl as appCtrl">
-  <head>
-    <title ng-bind="appCtrl.pageTitle"></title>
+    <head>
+        <title ng-bind="appCtrl.pageTitle"></title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+        <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+        <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
-    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+        <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+        <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
-  </head>
-  <body>
-    <div class="container">
-      <ar-navbar></ar-navbar>
-    </div>
+    </head>
+    <body>
+        <div class="container">
+            <ar-navbar></ar-navbar>
+        </div>
 
-    <div class="container" ui-view></div>
+        <div class="container" ui-view></div>
 
-    <% if (livereload) { %>
-    <!--[if !IE]><!--><script src="http://localhost:35729/livereload.js"></script><!--<![endif]--><% } %>
-  </body>
+        <% if (livereload) { %>
+        <!--[if !IE]><!--><script src="http://localhost:35729/livereload.js"></script><!--<![endif]--><% } %>
+    </body>
 </html>

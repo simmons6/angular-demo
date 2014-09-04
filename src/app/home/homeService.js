@@ -15,37 +15,14 @@ angular.module('angulaReminders.home')
 		return reminders;
 	};
 
-	var addReminder = function (reminder) {
+	this.addReminder = function (reminder) {
 		DataAccessService.saveReminder(reminder);
 		reminders.push(reminder);
 		sortRemindersByTimeRemaining();
 	};
 
-	var newReminderModalCtl = function ($scope) {
-		$scope.newReminder = {};
-
-		$scope.openDatepicker = function($event) {
-			$event.preventDefault();
-			$event.stopPropagation();
-			$scope.datepickerOpened = true;
-		};
-
-		$scope.isNewReminderValid = function () {
-			return $scope.newReminder.description != null &&
-				$scope.newReminder.date != null;
-		};
-
-		$scope.submit = function () {
-			if ($scope.isNewReminderValid()) {
-				addReminder(new Reminder($scope.newReminder.date, $scope.newReminder.description));
-				$scope.$close(true);
-			}
-		};
-	};
-
     this.addNewReminder = function () {
-        var resolve = {};
-        ModalService.openModal("home/newReminderModal/newReminderModal.tpl.html", newReminderModalCtl, resolve);
+        ModalService.openModal("home/newReminderModal/newReminderModal.tpl.html", 'NewReminderModalCtrl');
     };
 
     this.deleteReminder = function (reminder) {
@@ -53,15 +30,4 @@ angular.module('angulaReminders.home')
         var reminderIndex = reminders.indexOf(reminder);
         reminders.splice(reminderIndex, 1);
     };
-
-    this.getFilteredReminders = function (filterString) {
-		var filteredItems = [];
-		for (var i = 0; i < reminders.length; i++) {
-			var description = reminders[i].description;
-			if (description.toLowerCase().indexOf(filterString.toLowerCase()) !== -1) {
-				filteredItems.push(reminders[i]);
-			}
-		}
-		return filteredItems;
-	};
 });

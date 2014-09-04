@@ -1,8 +1,8 @@
 <div class="reminder-tile panel panel-default" ng-if="reminder != null">
     <div class="panel-heading">
-        <h4 dotdotdot>{{reminder.description}}
+        <h4 dotdotdot>{{reminder.name}}
             <small ng-bind="reminder.date | dateStringFilter"></small>
-        </h3>
+        </h4>
     </div>
     <div class="panel-body">
         <h4><span ng-bind="daysRemaining"></span>d <span ng-bind="hoursRemaining"></span>h <span ng-bind="minutesRemaining"></span>m <span ng-bind="secondsRemaining"></span>s</h4>

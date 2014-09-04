@@ -1,4 +1,2 @@
-function AppRun () { }
-
 angular.module( 'angulaReminders')
-  .run(AppRun);
+    .run(function AppRun () { });

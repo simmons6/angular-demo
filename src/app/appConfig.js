@@ -1,6 +1,4 @@
-function AppConfig($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home');
-}
-
 angular.module('angulaReminders')
-  .config(AppConfig);
+    .config(function AppConfig($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/home');
+    });

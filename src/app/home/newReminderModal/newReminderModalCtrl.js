@@ -1,5 +1,5 @@
 angular.module('angulaReminders.home.newReminderModal', ['angulaReminders.common'])
-    .controller('NewReminderModalCtrl', function NewReminderModalCtrl($scope, Reminder, HomeService) {
+    .controller('NewReminderModalCtrl', function NewReminderModalCtrl($scope, HomeService) {
         $scope.newReminder = {};
 
         $scope.openDatepicker = function($event) {
@@ -8,14 +8,11 @@ angular.module('angulaReminders.home.newReminderModal', ['angulaReminders.common
             $scope.datepickerOpened = true;
         };
 
-        $scope.isNewReminderValid = function () {
-            return $scope.newReminder.name != null &&
-                $scope.newReminder.date != null;
-        };
+        $scope.isReminderValid = HomeService.isReminderValid;
 
         $scope.submit = function () {
-            if ($scope.isNewReminderValid()) {
-                HomeService.addReminder(new Reminder($scope.newReminder.date, $scope.newReminder.name));
+            if (HomeService.isReminderValid($scope.newReminder)) {
+                HomeService.addReminder($scope.newReminder.date, $scope.newReminder.name);
                 $scope.$close(true);
             }
         };

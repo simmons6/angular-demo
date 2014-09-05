@@ -1,33 +1,39 @@
 angular.module('angulaReminders.home')
-    .service('HomeService', function HomeService(Reminder, ModalService, DataAccessService) {
-	var reminders = DataAccessService.getReminders();
+    .service('HomeService', function (Reminder, ModalService, DataAccessService) {
 
-	var remindersDateCompare = function (reminderA, reminderB) {
-		return reminderA.date > reminderB.date;
-	};
+        var reminders = DataAccessService.getReminders();
 
-	var sortRemindersByTimeRemaining = function () {
-		reminders.sort(remindersDateCompare);
-	};
+        var remindersDateCompare = function (reminderA, reminderB) {
+            return reminderA.date > reminderB.date;
+        };
 
-	sortRemindersByTimeRemaining();
-	this.getReminders = function () {
-		return reminders;
-	};
+        var sortRemindersByTimeRemaining = function () {
+            reminders.sort(remindersDateCompare);
+        };
 
-	this.addReminder = function (reminder) {
-		DataAccessService.saveReminder(reminder);
-		reminders.push(reminder);
-		sortRemindersByTimeRemaining();
-	};
+        sortRemindersByTimeRemaining();
+        this.getReminders = function () {
+            return reminders;
+        };
 
-    this.addNewReminder = function () {
-        ModalService.openModal("home/newReminderModal/newReminderModal.tpl.html", 'NewReminderModalCtrl');
-    };
+        this.isReminderValid =  function (reminder) {
+            return reminder.name != null && reminder.date != null;
+        };
 
-    this.deleteReminder = function (reminder) {
-        DataAccessService.deleteReminder(reminder);
-        var reminderIndex = reminders.indexOf(reminder);
-        reminders.splice(reminderIndex, 1);
-    };
-});
+        this.addReminder = function (reminderDate, reminderName) {
+            var reminder = new Reminder(reminderDate, reminderName);
+            DataAccessService.saveReminder(reminder);
+            reminders.push(reminder);
+            sortRemindersByTimeRemaining();
+        };
+
+        this.launchNewReminderModal = function () {
+            ModalService.openModal("home/newReminderModal/newReminderModal.tpl.html", 'NewReminderModalCtrl');
+        };
+
+        this.deleteReminder = function (reminder) {
+            DataAccessService.deleteReminder(reminder);
+            var reminderIndex = reminders.indexOf(reminder);
+            reminders.splice(reminderIndex, 1);
+        };
+    });

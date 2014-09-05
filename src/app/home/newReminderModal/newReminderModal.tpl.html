@@ -14,6 +14,6 @@
         </div>
     </div>
 
-    <button ng-click="submit()" class="btn btn-default" ng-disabled="!isNewReminderValid()">Add Reminder</button>
+    <button ng-click="submit()" class="btn btn-default" ng-disabled="!isReminderValid(newReminder)">Add Reminder</button>
     <a class="cancel-button" ng-click="$close(false)">Cancel</a>
 </form>
